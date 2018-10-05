@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour {
+public class GameController: MonoBehaviour
+{
 
     public GameObject[] minerSpawns;
     public GameObject[] mudSpawns;
@@ -13,21 +14,23 @@ public class GameManager : MonoBehaviour {
     GameObject mudPickup;
     GameObject[] lanternPieces = new GameObject[3];
 
-    void Start () {
+    void Start()
+    {
         StartSpawn();
 
 
     }
-	
-	void Update () {
 
-		
-	}
+    void Update()
+    {
+
+
+    }
 
     void StartSpawn()//spawn the player, mud and lantern pieces at predefined locations
     {
         GameObject miner = (GameObject)Instantiate(Resources.Load("Miner"), minerSpawns[Random.Range(0, minerSpawns.Length)].transform.position, Quaternion.identity);
-        mudPickup=(GameObject)Instantiate(Resources.Load("MudItem"), mudSpawns[Random.Range(0, mudSpawns.Length)].transform.position, Quaternion.identity);
+        mudPickup = (GameObject)Instantiate(Resources.Load("MudItem"), mudSpawns[Random.Range(0, mudSpawns.Length)].transform.position, Quaternion.identity);
         int[] lanternPos = new int[3];
         do
         {
