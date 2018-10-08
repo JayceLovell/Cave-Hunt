@@ -3,7 +3,11 @@ guid: 50f5a5b2b19c84b4788ab36f51736504
 TextureImporter:
   fileIDToRecycleName: {}
   externalObjects: {}
+<<<<<<< HEAD
+  serializedVersion: 6
+=======
   serializedVersion: 7
+>>>>>>> master
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -81,8 +85,11 @@ TextureImporter:
     edges: []
     weights: []
   spritePackingTag: 
+<<<<<<< HEAD
+=======
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
+>>>>>>> master
   userData: 
   assetBundleName: 
   assetBundleVariant: 
