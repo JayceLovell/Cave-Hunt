@@ -20,9 +20,9 @@ public class TextToSpeechScript : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        _text = "Testing this thing";
         _audio = gameObject.GetComponent<AudioSource>();
-        StartCoroutine(DownloadTheAudio());
+        //default text
+        _text = "Failed";
 	}
 	
 	// Update is called once per frame
@@ -32,10 +32,38 @@ public class TextToSpeechScript : MonoBehaviour {
     IEnumerator DownloadTheAudio()
     {
         //Youtube Video here>>>>> https://www.youtube.com/watch?v=RDkDXZ8P1bg
-        string url = "http://transalte.google.com/translate_tts?ie=UTF-8&total=1&idx=O&textlen=32&client=tw-ob&q="+_text+"&tl=En-gb";
+        //url for google tts
+        string url = "http://translate.google.com/translate_tts?ie=UTF-8&total=1&idx=0&textlen=32&client=tv-ob&q=SampleText*tl=En-gb";
+
         WWW www = new WWW(url);
+
         yield return www;
-        _audio.clip = www.GetAudioClip(false, true, AudioType.MPEG);
+
+        //chekcs extension so to know which audio type to set
+        string extension = url.Substring(url.Length - 4);
+        Debug.Log("extension: " + extension);
+
+        if (extension.Equals(".ogg"))
+            _audio.clip = www.GetAudioClip(true, true, AudioType.OGGVORBIS);
+        else if (extension.Equals(".mp3"))
+            _audio.clip = www.GetAudioClip(true, true, AudioType.MPEG);
+        else if (extension.Equals(".wav"))
+            _audio.clip = www.GetAudioClip(true, true, AudioType.WAV);
+        else
+            _audio.clip = www.GetAudioClip(true, true, AudioType.UNKNOWN);
+
+        yield return new WaitForSeconds(0.5f);
+
+        //set audio type
+        _audio.clip = www.GetAudioClip(true, true, AudioType.ACC);
+        //play
         _audio.Play();
+    }
+    public void PlayText(string text)
+    {
+        //gets text and set it into private text for tts
+        _text = text;
+        //calls enum
+        StartCoroutine(DownloadTheAudio());
     }
 }

@@ -17,8 +17,6 @@ public class GameController: MonoBehaviour
     void Start()
     {
         StartSpawn();
-
-
     }
 
     void Update()

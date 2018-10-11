@@ -10,12 +10,17 @@ public class Menu : MonoBehaviour {
     bool waitForStart=false;
     InformationStorage information;
     Text rounds;
+    public TextToSpeechScript textToSpeechScript;
+
+
+    
 
     void Start()
     {
-        notification = GameObject.Find("Notification").GetComponent<Text>();
-        rounds = GameObject.Find("Rounds").GetComponent<Text>();
-        information = GameObject.Find("gameInfo").GetComponent<InformationStorage>();
+        //notification = GameObject.Find("Notification").GetComponent<Text>();
+        //rounds = GameObject.Find("Rounds").GetComponent<Text>();
+        //information = GameObject.Find("gameInfo").GetComponent<InformationStorage>();
+        textToSpeechScript.PlayText("testing");
     }
 
     public void StartBtn()
