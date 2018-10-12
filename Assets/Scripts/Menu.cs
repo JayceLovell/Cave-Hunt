@@ -79,15 +79,25 @@ public class Menu : MonoBehaviour {
 
     private void Update()
     {
-        if (Input.GetButtonDown("MinerConfirm") && _waitForStart)
+        if (Input.GetKeyDown(KeyCode.Joystick1Button7) && _waitForStart)
         {
             SceneManager.LoadScene("GameScene", LoadSceneMode.Single);
         }
-        else if (Input.GetButtonDown("MinerConfirm"))
+        else if (Input.GetKeyDown(KeyCode.Joystick1Button7))
         {
             notification.text = "Waiting for other player to confirm";
             //play sound Text now
         }
+        /*
+         KeyCode.Joystick1Button0 is A
+         KeyCode.Joystick1Button1 is B
+         KeyCode.Joystick1Button9 is right analog stick
+          KeyCode.Joystick1Button7 is start button
+         this code is to find which button is which on joypad
+        if (Input.GetKeyDown(KeyCode.Joystick1Button7))
+        {
+            Debug.Log("success");
+        }*/
 
     }
 
