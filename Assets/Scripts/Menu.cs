@@ -13,10 +13,11 @@ public class Menu : MonoBehaviour {
 
     public int Rounds;
     public float Volume;
-    public int[] Score;
     public Text txtrounds;
     public Text notification;
-    public GameManager gameManager;
+    public Text txtVolume;
+
+    public GameManager _gameManager;
 
     AudioSource audioSource;
 
@@ -24,11 +25,21 @@ public class Menu : MonoBehaviour {
     {
         notification = GameObject.Find("Notification").GetComponent<Text>();
         txtrounds = GameObject.Find("TxtRounds").GetComponent<Text>();
+        txtVolume = GameObject.Find("TxtVolume").GetComponent<Text>();
         audioSource = this.GetComponent<AudioSource>();
-        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        Rounds = gameManager.Rounds;
-        Volume = gameManager.Volume;
-        Score = gameManager.Score;
+
+        //_gameManager = GetComponent<GameManager>();
+
+        Debug.Log("Rounds = " + _gameManager.Rounds);
+        Debug.Log("Volume = " + _gameManager.Volume);
+        //Debug.Log("Score = " + _gameManager.Score[0]);
+
+        Rounds = _gameManager.Rounds;
+        Volume = _gameManager.Volume;
+        //Score = _gameManager.Score;
+
+        GameObject.Find("Slider").GetComponent<Slider>().value = Rounds;
+        GameObject.Find("VolumeSlider").GetComponent<Slider>().value = Volume;
     }
     public void StartBtn()
     {
@@ -38,22 +49,29 @@ public class Menu : MonoBehaviour {
     public void OptionBtn()
     {
         displayRounds();
+        displayVolume();
         StartCoroutine(ShiftMenu(2000));
     }
     public void ApplyBtn()
     {
         Rounds= (int)GameObject.Find("Slider").GetComponent<Slider>().value;
+        Volume = (float)GameObject.Find("VolumeSlider").GetComponent<Slider>().value;
         BackBtn();
     }
     public void BackBtn()
     {
         GameObject.Find("Slider").GetComponent<Slider>().value = Rounds;
+        GameObject.Find("VolumeSlider").GetComponent<Slider>().value=Volume;
         displayRounds();
         StartCoroutine(ShiftMenu(-2000));
     }
     public void displayRounds()
     {
         txtrounds.text = "Rounds: " + (int)GameObject.Find("Slider").GetComponent<Slider>().value;
+    }
+    public void displayVolume()
+    {
+        txtVolume.text = "Volume: " + (float)GameObject.Find("VolumeSlider").GetComponent<Slider>().value;
     }
     private IEnumerator ShiftMenu(int _height)
     {
@@ -79,9 +97,10 @@ public class Menu : MonoBehaviour {
     {
         if (_waitForStartPlayerA && _waitForStartPlayerB)
         {
-            gameManager.Score = Score;
-            gameManager.Volume = Volume;
-            gameManager.Rounds = Rounds;
+           // _gameManager.Score = Score;
+            _gameManager.Volume = Volume;
+            _gameManager.Rounds = Rounds;
+
             SceneManager.LoadScene("GameScene", LoadSceneMode.Single);
         }
 

@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour {
 
-    private int _rounds;
+    private int _rounds = 3;
     private float _volume = 50;
-    private int[] _score = { 0, 0 };
+    private int[] _score;
     private int _currentRoundLanternpieces;
 
     public int Rounds
@@ -57,7 +57,10 @@ public class GameManager : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-		
+        Debug.Log("Game Manager");
+        _score = new int[2];
+        _score[0] = 0;
+        _score[1] = 0;
 	}
 	
 	// Update is called once per frame
