@@ -11,14 +11,12 @@ public class GameController: MonoBehaviour
     public GameObject[] MinerSpawns;
     public GameObject[] MudSpawns;
     public GameObject[] LanternSpawns;
-    public Transform[] SpawnLocations;
     public GameManager _gameManager;
     public Text TxtRounds;
-
-    public GameObject ghost;
-    GameObject miner;
-    GameObject mudPickup;
-    GameObject[] lanternPieces = new GameObject[3];
+    public GameObject Ghost;
+    public GameObject Miner;
+    public GameObject MudPickup;
+    public GameObject[] lanternPieces = new GameObject[3];
 
     void Start()
     {
@@ -35,8 +33,8 @@ public class GameController: MonoBehaviour
 
     void StartSpawn()//spawn the player, mud and lantern pieces at predefined locations
     {
-        GameObject miner = (GameObject)Instantiate(Resources.Load("Miner"), MinerSpawns[Random.Range(0, MinerSpawns.Length)].transform.position, Quaternion.identity);
-        mudPickup = (GameObject)Instantiate(Resources.Load("MudItem"), MudSpawns[Random.Range(0, MudSpawns.Length)].transform.position, Quaternion.identity);
+        var miner = (GameObject)Instantiate(Resources.Load("Miner"), MinerSpawns[Random.Range(0, MinerSpawns.Length)].transform.position, Quaternion.identity);
+        var mudPickup = (GameObject)Instantiate(Resources.Load("MudItem"), MudSpawns[Random.Range(0, MudSpawns.Length)].transform.position, Quaternion.identity);
         int[] lanternPos = new int[3];
         do
         {
