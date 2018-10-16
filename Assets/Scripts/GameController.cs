@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,6 +12,8 @@ public class GameController: MonoBehaviour
     private GameObject _miner;
     private GameObject _mud;
     private GameManager _gameManager;
+    private int _ghostWin;
+    private int _minerWin;
 
     public GameObject[] MinerSpawns = new GameObject[8];
     public GameObject[] MudSpawns = new GameObject[3];
@@ -24,13 +27,18 @@ public class GameController: MonoBehaviour
 
     void Start()
     {
+        this._initialize();
+        StartSpawn();
+    }
+
+    private void _initialize()
+    {
         GameManager = GameObject.Find("GameManager");
         _gameManager = GameManager.GetComponent<GameManager>() as GameManager;
-
-
-        StartSpawn();
         _rounds = _gameManager.Rounds;
         TxtRounds.text = "Round: " + _currentround;
+        _ghostWin = 0;
+        _minerWin = 0;
     }
 
     void Update()
@@ -67,6 +75,18 @@ public class GameController: MonoBehaviour
     }
     */
     public void RestartGame()
+    {
+
+    }
+    public void GhostWin()
+    {
+
+    }
+    public void MinerWin()
+    {
+
+    }
+    public void GameEnd()
     {
 
     }

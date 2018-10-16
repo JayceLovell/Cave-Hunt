@@ -18,11 +18,7 @@ public class MinerScript : MonoBehaviour {
     // Use this for initialization
     void Start () {
         this._initialize();
-        GameControllerObject = GameObject.Find("GameController");
-        _gameController = GameControllerObject.GetComponent<GameController>() as GameController;
-
-        GameManagerObject = GameObject.Find("GameManager");
-        _gameManager = GameManagerObject.GetComponent<GameManager>() as GameManager;
+        
     }
     // PRIVATE METHODS
     /**
@@ -31,6 +27,11 @@ public class MinerScript : MonoBehaviour {
     private void _initialize()
     {
         minerRigidBody = GetComponent<Rigidbody2D>();
+        GameControllerObject = GameObject.Find("GameController");
+        _gameController = GameControllerObject.GetComponent<GameController>() as GameController;
+
+        GameManagerObject = GameObject.Find("GameManager");
+        _gameManager = GameManagerObject.GetComponent<GameManager>() as GameManager;
     }
 
     // Update is called once per frame
