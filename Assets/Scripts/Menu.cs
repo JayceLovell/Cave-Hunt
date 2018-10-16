@@ -7,47 +7,70 @@ using UnityEngine.SceneManagement;
 public class Menu : MonoBehaviour {
 
     
-    private bool waitForStartPlayerA = false;
-    private bool waitForStartPlayerB = false;
-    private int selection=0;
-    public int rounds = 3;
-    public float volume = 50;
-    public int[] score = { 0, 0 };
-    public int currentRoundLanternpieces = 0;
-    public Text txtrounds;
-    public Text notification;
+    private bool _waitForStartPlayerA = false;
+    private bool _waitForStartPlayerB = false;
+    private int _selection=0;
+    private GameManager _gameManager;
+
+    public int Rounds;
+    public int Volume;
+    public Text Txtrounds;
+    public Text Notification;
+    public Text TxtVolume;
+    public GameObject gameManangerObject;
+    public Slider VolumeSlider;
+
     AudioSource audioSource;
 
     void Start()
     {
-        notification = GameObject.Find("Notification").GetComponent<Text>();
-        txtrounds = GameObject.Find("TxtRounds").GetComponent<Text>();
+        Notification = GameObject.Find("Notification").GetComponent<Text>();
+        Txtrounds = GameObject.Find("TxtRounds").GetComponent<Text>();
+        TxtVolume = GameObject.Find("TxtVolume").GetComponent<Text>();
+        VolumeSlider = GameObject.Find("VolumeSlider").GetComponent<Slider>();
         audioSource = this.GetComponent<AudioSource>();
+
+        gameManangerObject = GameObject.Find("GameManager");
+        _gameManager = gameManangerObject.GetComponent<GameManager>() as GameManager;
+
+        Rounds = _gameManager.Rounds;
+        Volume = _gameManager.Volume;
+
+        GameObject.Find("Slider").GetComponent<Slider>().value = Rounds;
+        VolumeSlider.value = Volume;
     }
     public void StartBtn()
     {
-        notification.text = "Waiting for other player to confirm";
-        waitForStartPlayerA = true;
+        Notification.text = "Waiting for other player to confirm";
+        _waitForStartPlayerA = true;
     }
     public void OptionBtn()
     {
-        displayRounds();
+        DisplayRounds();
+        DisplayVolume();
         StartCoroutine(ShiftMenu(2000));
     }
     public void ApplyBtn()
     {
-        rounds= (int)GameObject.Find("Slider").GetComponent<Slider>().value;
+        Rounds= (int)GameObject.Find("Slider").GetComponent<Slider>().value;
+        Volume = (int)VolumeSlider.GetComponent<Slider>().value;
         BackBtn();
     }
     public void BackBtn()
     {
-        GameObject.Find("Slider").GetComponent<Slider>().value = rounds;
-        displayRounds();
+        GameObject.Find("Slider").GetComponent<Slider>().value = Rounds;
+        GameObject.Find("VolumeSlider").GetComponent<Slider>().value=Volume;
+        DisplayRounds();
         StartCoroutine(ShiftMenu(-2000));
     }
-    public void displayRounds()
+    public void DisplayRounds()
     {
-        txtrounds.text = "Rounds: " + (int)GameObject.Find("Slider").GetComponent<Slider>().value;
+        Txtrounds.text = "Rounds: " + (int)GameObject.Find("Slider").GetComponent<Slider>().value;
+    }
+    public void DisplayVolume()
+    {
+        //Unkown error here
+        TxtVolume.text = "Volume: " + (int)VolumeSlider.GetComponent<Slider>().value;
     }
     private IEnumerator ShiftMenu(int _height)
     {
@@ -58,58 +81,62 @@ public class Menu : MonoBehaviour {
 
     private void playSelectionSound()
     {
-        switch (selection)
+        switch (_selection)
         {
             case 0:
-                audioSource.PlayOneShot((AudioClip)Resources.Load("../voice/StartGame"), volume/100);
+                audioSource.PlayOneShot((AudioClip)Resources.Load("../voice/StartGame"), Volume/100);
                 break;
             case 1:
-                audioSource.PlayOneShot((AudioClip)Resources.Load("../voice/VolmeSetting"), volume / 100);
+                audioSource.PlayOneShot((AudioClip)Resources.Load("../voice/VolmeSetting"), Volume / 100);
                 break;
         }
     }
     //check for keys
     private void Update()
     {
-        if (waitForStartPlayerA && waitForStartPlayerB)
+        if (_waitForStartPlayerA && _waitForStartPlayerB)
         {
+           // _gameManager.Score = Score;
+            _gameManager.Volume = Volume;
+            _gameManager.Rounds = Rounds;
+
             SceneManager.LoadScene("GameScene", LoadSceneMode.Single);
         }
 
-        if (Input.GetAxis("MinerVer")>0.5f&&selection>0)
+        if (Input.GetAxis("JoyStickVertical") > 0.5f&&_selection>0)
         {
-            selection++;
+            _selection++;
             playSelectionSound();
         }
-        else if (Input.GetAxis("MinerVer") < -0.5f && selection < 1)
+        else if (Input.GetAxis("JoyStickVertical") < -0.5f && _selection < 1)
         {
-            selection--;
+            _selection--;
             playSelectionSound();
         }
 
 
-        switch (selection)
+        switch (_selection)
         {
             case 0:
-                if (Input.GetButton("MinerConfirm"))
+                if (Input.GetButton("JoyPadSubmit"))
                 {
-                    waitForStartPlayerB = true;
-                    audioSource.PlayOneShot((AudioClip)Resources.Load("../voice/waitingStart"), volume / 100);
+                    _waitForStartPlayerB = true;
+                    audioSource.PlayOneShot((AudioClip)Resources.Load("../voice/waitingStart"), Volume / 100);
                 }
                 break;
                 //loudness
             case 1:
-                if (Input.GetAxis("MinerHor") > 0.5f && volume < 90)
+                if (Input.GetAxis("MinerHor") > 0.5f && Volume < 90)
                 {
-                    volume += 10;
-                    string volSource = "../voice/" + volume + "p";
-                    audioSource.PlayOneShot((AudioClip)Resources.Load(volSource), volume / 100);
+                    Volume += 10;
+                    string volSource = "../voice/" + Volume + "p";
+                    audioSource.PlayOneShot((AudioClip)Resources.Load(volSource), Volume / 100);
                 }
-                else if (Input.GetAxis("MinerHor") < -0.5f && volume > 10) 
+                else if (Input.GetAxis("MinerHor") < -0.5f && Volume > 10) 
                 {
-                    volume -= 10;
-                    string volSource = "../voice/"+volume + "p";
-                    audioSource.PlayOneShot((AudioClip)Resources.Load(volSource), volume / 100);
+                    Volume -= 10;
+                    string volSource = "../voice/"+Volume + "p";
+                    audioSource.PlayOneShot((AudioClip)Resources.Load(volSource), Volume / 100);
                 }
                 break;
         }
