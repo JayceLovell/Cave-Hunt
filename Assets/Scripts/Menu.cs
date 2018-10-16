@@ -10,14 +10,14 @@ public class Menu : MonoBehaviour {
     private bool _waitForStartPlayerA = false;
     private bool _waitForStartPlayerB = false;
     private int _selection=0;
+    private GameManager _gameManager;
 
     public int Rounds;
     public float Volume;
     public Text txtrounds;
     public Text notification;
     public Text txtVolume;
-
-    public GameManager _gameManager;
+    public GameObject gameManangerObject;
 
     AudioSource audioSource;
 
@@ -28,15 +28,14 @@ public class Menu : MonoBehaviour {
         txtVolume = GameObject.Find("TxtVolume").GetComponent<Text>();
         audioSource = this.GetComponent<AudioSource>();
 
-        //_gameManager = GetComponent<GameManager>();
+        gameManangerObject = GameObject.Find("GameManager");
+        _gameManager = gameManangerObject.GetComponent<GameManager>() as GameManager;
 
         Debug.Log("Rounds = " + _gameManager.Rounds);
         Debug.Log("Volume = " + _gameManager.Volume);
-        //Debug.Log("Score = " + _gameManager.Score[0]);
 
         Rounds = _gameManager.Rounds;
         Volume = _gameManager.Volume;
-        //Score = _gameManager.Score;
 
         GameObject.Find("Slider").GetComponent<Slider>().value = Rounds;
         GameObject.Find("VolumeSlider").GetComponent<Slider>().value = Volume;
