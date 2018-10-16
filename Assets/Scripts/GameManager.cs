@@ -6,7 +6,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour {
 
     private int _rounds = 3;
-    private float _volume = 50;
+    private int _volume = 50;
     private int[] _score;
     private int _currentRoundLanternpieces;
 
@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour {
             _rounds = value;
         }
     }
-    public float Volume
+    public int Volume
     {
         get
         {
