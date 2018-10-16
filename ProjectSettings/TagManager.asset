@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Spawn
   - Mud
+  - Ghost
+  - Miner
   layers:
   - Default
   - TransparentFX

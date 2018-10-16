@@ -8,11 +8,12 @@ public class GameController: MonoBehaviour
     private int _rounds;
     private int _currentround=1;
     private GameObject[] lanternPieces = new GameObject[3];
+    private GameManager _gameManager;
 
-    public GameObject[] MinerSpawns = new GameObject[7];
+    public GameObject[] MinerSpawns = new GameObject[8];
     public GameObject[] MudSpawns = new GameObject[3];
     public GameObject[] LanternSpawns = new GameObject[3];
-    public GameManager _gameManager;
+    public GameObject gameManangerObject;
     public Text TxtRounds;
     public GameObject Ghost;
     public GameObject Miner;
@@ -21,6 +22,10 @@ public class GameController: MonoBehaviour
 
     void Start()
     {
+        gameManangerObject = GameObject.Find("GameManager");
+        _gameManager = gameManangerObject.GetComponent<GameManager>() as GameManager;
+
+
         StartSpawn();
         _rounds = _gameManager.Rounds;
         TxtRounds.text = "Round: " + _currentround;
