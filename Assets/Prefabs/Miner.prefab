@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212628140485028546}
   - component: {fileID: 60697046423479038}
   - component: {fileID: 81040259515829810}
+  - component: {fileID: 114812682938307520}
   m_Layer: 0
   m_Name: Miner
   m_TagString: Player
@@ -120,6 +121,17 @@ AudioListener:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1582523619377354}
   m_Enabled: 1
+--- !u!114 &114812682938307520
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1582523619377354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 769b7ae7b841cd44086b02c54aaaba05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212628140485028546
 SpriteRenderer:
   m_ObjectHideFlags: 1
