@@ -7,13 +7,15 @@ public class GameController: MonoBehaviour
 {
     private int _rounds;
     private int _currentround=1;
-    private GameObject[] lanternPieces = new GameObject[3];
+    private GameObject[] _lanternPieces = new GameObject[3];
+    private GameObject _miner;
+    private GameObject _mud;
     private GameManager _gameManager;
 
     public GameObject[] MinerSpawns = new GameObject[8];
     public GameObject[] MudSpawns = new GameObject[3];
     public GameObject[] LanternSpawns = new GameObject[3];
-    public GameObject gameManangerObject;
+    public GameObject GameManager;
     public Text TxtRounds;
     public GameObject Ghost;
     public GameObject Miner;
@@ -22,8 +24,8 @@ public class GameController: MonoBehaviour
 
     void Start()
     {
-        gameManangerObject = GameObject.Find("GameManager");
-        _gameManager = gameManangerObject.GetComponent<GameManager>() as GameManager;
+        GameManager = GameObject.Find("GameManager");
+        _gameManager = GameManager.GetComponent<GameManager>() as GameManager;
 
 
         StartSpawn();
@@ -39,8 +41,8 @@ public class GameController: MonoBehaviour
 
     void StartSpawn()//spawn the player, mud and lantern pieces at predefined locations
     {
-        var miner = (GameObject)Instantiate(Miner, MinerSpawns[Random.Range(0, MinerSpawns.Length)].transform.position, Quaternion.identity);
-        var mud = (GameObject)Instantiate(Mud, MudSpawns[Random.Range(0, MudSpawns.Length)].transform.position, Quaternion.identity);
+        _miner = (GameObject)Instantiate(Miner, MinerSpawns[Random.Range(0, MinerSpawns.Length)].transform.position, Quaternion.identity);
+        _mud = (GameObject)Instantiate(Mud, MudSpawns[Random.Range(0, MudSpawns.Length)].transform.position, Quaternion.identity);
         int[] lanternPos = new int[3];
         /*do
         {
@@ -49,9 +51,9 @@ public class GameController: MonoBehaviour
             lanternPos[2] = Random.Range(0, lanternPieces.Length);
         } while ((lanternPos[0] == lanternPos[1]) || (lanternPos[0] == lanternPos[2]) || (lanternPos[1] == lanternPos[2]));
         */
-        lanternPieces[0] = (GameObject)Instantiate(LanternPieces[0], LanternSpawns[0].transform.position, Quaternion.identity);
-        lanternPieces[1] = (GameObject)Instantiate(LanternPieces[1], LanternSpawns[1].transform.position, Quaternion.identity);
-        lanternPieces[2] = (GameObject)Instantiate(LanternPieces[2], LanternSpawns[2].transform.position, Quaternion.identity);
+        _lanternPieces[0] = (GameObject)Instantiate(LanternPieces[0], LanternSpawns[0].transform.position, Quaternion.identity);
+        _lanternPieces[1] = (GameObject)Instantiate(LanternPieces[1], LanternSpawns[1].transform.position, Quaternion.identity);
+        _lanternPieces[2] = (GameObject)Instantiate(LanternPieces[2], LanternSpawns[2].transform.position, Quaternion.identity);
     }
     /*
     void PlayerInput()
@@ -64,4 +66,8 @@ public class GameController: MonoBehaviour
         }
     }
     */
+    public void RestartGame()
+    {
+
+    }
 }

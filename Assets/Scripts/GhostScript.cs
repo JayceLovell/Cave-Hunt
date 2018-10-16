@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GhostScript : MonoBehaviour {
-
-    private GameObject _camera;
     private Vector2 _newPosition = new Vector2(0.0f, 0.0f);
     private Rigidbody2D ghostRigidBody;
 
@@ -23,12 +21,12 @@ public class GhostScript : MonoBehaviour {
      */
     private void _initialize()
     {
-        this._camera = GameObject.FindWithTag("MainCamera");
         ghostRigidBody = GetComponent<Rigidbody2D>();
     }
 
         // Update is called once per frame
     void FixedUpdate () {
+        
 
             //Store the current horizontal input in the float moveHorizontal.
             moveHorizontal = Input.GetAxis("Horizontal");
