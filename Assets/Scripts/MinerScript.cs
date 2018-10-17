@@ -30,4 +30,11 @@ public class MinerScript : MonoBehaviour {
         Vector2 movement = new Vector2(Input.GetAxis("JoyStickHorizontal"), Input.GetAxis("JoyStickVertical"));
         minerRigidBody.velocity = movement * speed;
     }
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Wall"))
+        {
+            //playsound
+        }
+     }
 }
