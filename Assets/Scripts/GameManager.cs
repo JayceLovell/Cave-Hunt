@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour {
 
     private int _rounds = 3;
     private int _volume = 50;
-    private int[] _score;
+    public int[] Score = new int[2];
     private int _currentRoundLanternpieces;
 
     public int Rounds
@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour {
             _volume = value;
         }
     }
-    public int[] Score
+    /*public int[] Score
     {
         get
         {
@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour {
         {
             _score = value;
         }
-    }
+    }*/
     public int CurrentRoundLanternpieces
     {
         get
@@ -58,10 +58,7 @@ public class GameManager : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        Debug.Log("Game Manager");
-        _score = new int[2];
-        _score[0] = 0;
-        _score[1] = 0;
+        
 	}
 	
 	// Update is called once per frame
@@ -72,5 +69,12 @@ public class GameManager : MonoBehaviour {
     {
         //Sets this to not be destroyed when reloading scene
         DontDestroyOnLoad(gameObject);
+        initialization();
+    }
+    private void initialization()
+    {
+        Score[0] = 0;
+        Score[1] = 0;
+        Debug.Log("Game Manager Loaded");
     }
 }

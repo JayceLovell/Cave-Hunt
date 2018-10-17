@@ -21,9 +21,10 @@ GameObject:
   - component: {fileID: 4605917322821510}
   - component: {fileID: 212560390591393398}
   - component: {fileID: 60619308911031186}
+  - component: {fileID: 114305026741082922}
   m_Layer: 0
   m_Name: LanterPieceThree
-  m_TagString: Untagged
+  m_TagString: Lantern
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -95,6 +96,18 @@ PolygonCollider2D:
       - {x: 0.42999998, y: -0.56}
       - {x: 0.52, y: -0.48999998}
       - {x: 0.51, y: -0.38}
+--- !u!114 &114305026741082922
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1788969987175964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c15e8d90cbd0bd49b45a1b1618c4c5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameControllerObject: {fileID: 0}
 --- !u!212 &212560390591393398
 SpriteRenderer:
   m_ObjectHideFlags: 1

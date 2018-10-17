@@ -18,7 +18,6 @@ public class Menu : MonoBehaviour {
     public Text Notification;
     public Text TxtVolume;
     public GameObject gameManangerObject;
-    public Slider VolumeSlider;
 
     AudioSource audioSource;
 
@@ -27,7 +26,6 @@ public class Menu : MonoBehaviour {
         Notification = GameObject.Find("Notification").GetComponent<Text>();
         Txtrounds = GameObject.Find("TxtRounds").GetComponent<Text>();
         TxtVolume = GameObject.Find("TxtVolume").GetComponent<Text>();
-        VolumeSlider = GameObject.Find("VolumeSlider").GetComponent<Slider>();
         audioSource = this.GetComponent<AudioSource>();
 
         gameManangerObject = GameObject.Find("GameManager");
@@ -37,7 +35,7 @@ public class Menu : MonoBehaviour {
         Volume = _gameManager.Volume;
 
         GameObject.Find("Slider").GetComponent<Slider>().value = Rounds;
-        VolumeSlider.value = Volume;
+        GameObject.Find("VolumeSlider").GetComponent<Slider>().value = Volume;
     }
     public void StartBtn()
     {
@@ -48,12 +46,12 @@ public class Menu : MonoBehaviour {
     {
         DisplayRounds();
         DisplayVolume();
-        StartCoroutine(ShiftMenu(2000));
+        StartCoroutine(ShiftMenu(700));
     }
     public void ApplyBtn()
     {
         Rounds= (int)GameObject.Find("Slider").GetComponent<Slider>().value;
-        Volume = (int)VolumeSlider.GetComponent<Slider>().value;
+        Volume = (int)GameObject.Find("VolumeSlider").GetComponent<Slider>().value;
         BackBtn();
     }
     public void BackBtn()
@@ -61,7 +59,8 @@ public class Menu : MonoBehaviour {
         GameObject.Find("Slider").GetComponent<Slider>().value = Rounds;
         GameObject.Find("VolumeSlider").GetComponent<Slider>().value=Volume;
         DisplayRounds();
-        StartCoroutine(ShiftMenu(-2000));
+        DisplayVolume();
+        StartCoroutine(ShiftMenu(-700));
     }
     public void DisplayRounds()
     {
@@ -70,7 +69,7 @@ public class Menu : MonoBehaviour {
     public void DisplayVolume()
     {
         //Unkown error here
-        TxtVolume.text = "Volume: " + (int)VolumeSlider.GetComponent<Slider>().value;
+        TxtVolume.text = "Volume: " + (int)GameObject.Find("VolumeSlider").GetComponent<Slider>().value;
     }
     private IEnumerator ShiftMenu(int _height)
     {

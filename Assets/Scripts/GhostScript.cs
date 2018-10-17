@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GhostScript : MonoBehaviour {
+
+    private GameController _gameController;
     private Vector2 _newPosition = new Vector2(0.0f, 0.0f);
     private Rigidbody2D ghostRigidBody;
 
+    public GameObject GameControllerObject;
     public AudioSource ghostwhail;
     public float speed=10.0f;
     public float moveHorizontal;
@@ -22,6 +25,8 @@ public class GhostScript : MonoBehaviour {
     private void _initialize()
     {
         ghostRigidBody = GetComponent<Rigidbody2D>();
+        GameControllerObject = GameObject.Find("GameController");
+        _gameController = GameControllerObject.GetComponent<GameController>() as GameController;
     }
 
         // Update is called once per frame
@@ -40,4 +45,12 @@ public class GhostScript : MonoBehaviour {
         //Call the AddForce function of our Rigidbody2D rb2d supplying movement multiplied by speed to move our player.
         ghostRigidBody.velocity = movement * speed;
     }
- }
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Miner"))
+        {
+            Destroy(other.gameObject);
+            _gameController.GhostWin();
+        }
+    }
+}

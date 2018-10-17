@@ -1352,6 +1352,7 @@ MonoBehaviour:
   - {fileID: 1841838893657172, guid: 1c723b2ce7e1e964792ca3ddce37e2f1, type: 2}
   - {fileID: 1482422343692482, guid: b795fbd66199db54ebc61a36ea710bba, type: 2}
   - {fileID: 1788969987175964, guid: 36a0c61554c82ae48a970f077d176ada, type: 2}
+  LanternsCollected: 0
 --- !u!4 &1510377501
 Transform:
   m_ObjectHideFlags: 0

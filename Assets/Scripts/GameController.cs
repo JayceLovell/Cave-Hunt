@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameController: MonoBehaviour
@@ -11,6 +13,9 @@ public class GameController: MonoBehaviour
     private GameObject _miner;
     private GameObject _mud;
     private GameManager _gameManager;
+    private MinerScript _playerMiner;
+    private int _ghostWin;
+    private int _minerWin;
 
     public GameObject[] MinerSpawns = new GameObject[8];
     public GameObject[] MudSpawns = new GameObject[3];
@@ -21,28 +26,53 @@ public class GameController: MonoBehaviour
     public GameObject Miner;
     public GameObject Mud;
     public GameObject[] LanternPieces = new GameObject[3];
+    public int LanternsCollected;
 
     void Start()
     {
+        this._initialize();
+        StartSpawn();
+    }
+
+    private void _initialize()
+    {
         GameManager = GameObject.Find("GameManager");
         _gameManager = GameManager.GetComponent<GameManager>() as GameManager;
-
-
-        StartSpawn();
         _rounds = _gameManager.Rounds;
         TxtRounds.text = "Round: " + _currentround;
+        _ghostWin = _gameManager.Score[0];
+        _minerWin = _gameManager.Score[1];
+        LanternsCollected = 0;
     }
 
     void Update()
     {
-
+        _gameManager.Score[0] = _ghostWin;
+        _gameManager.Score[1] = _minerWin;
+        if (_ghostWin>(_rounds/2))
+        {
+            SceneManager.LoadScene("Finish", LoadSceneMode.Single);
+        }
+        else if(_minerWin>(_rounds/2))
+        {
+            SceneManager.LoadScene("Finish", LoadSceneMode.Single);
+        }
+        else if(LanternsCollected == 3)
+        {
+            MinerWin();
+        }
+        else if(_currentround==_rounds)
+        {
+            //No Wnner
+            GameEnd();
+        }
 
     }
 
     void StartSpawn()//spawn the player, mud and lantern pieces at predefined locations
     {
-        _miner = (GameObject)Instantiate(Miner, MinerSpawns[Random.Range(0, MinerSpawns.Length)].transform.position, Quaternion.identity);
-        _mud = (GameObject)Instantiate(Mud, MudSpawns[Random.Range(0, MudSpawns.Length)].transform.position, Quaternion.identity);
+        _miner = (GameObject)Instantiate(Miner, MinerSpawns[UnityEngine.Random.Range(0, MinerSpawns.Length)].transform.position, Quaternion.identity);
+        _mud = (GameObject)Instantiate(Mud, MudSpawns[UnityEngine.Random.Range(0, MudSpawns.Length)].transform.position, Quaternion.identity);
         int[] lanternPos = new int[3];
         /*do
         {
@@ -68,6 +98,38 @@ public class GameController: MonoBehaviour
     */
     public void RestartGame()
     {
+        StartSpawn();
+        _currentround++;
+        TxtRounds.text = "Round: " + _currentround;
+    }
+    public void GhostWin()
+    {
+        _ghostWin++;
+        RestartGame();
+    }
+    public void MinerWin()
+    {
+        _minerWin++;
+        RestartGame();
+    }
+    public void GameEnd()
+    {
+        SceneManager.LoadScene("Finish", LoadSceneMode.Single);
+    }
+    public void SlowMiner()
+    {
+        _playerMiner = _miner.GetComponent<MinerScript>() as MinerScript;
+        _playerMiner.Speed = 1;
+        StartCoroutine(speedTime());
+    }
+    IEnumerator speedTime()
+    {
+        yield return new WaitForSeconds(3);
+        revertSpeed();
+    }
 
+    private void revertSpeed()
+    {
+        _playerMiner.Speed = 10;
     }
 }

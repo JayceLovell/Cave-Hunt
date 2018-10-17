@@ -155,7 +155,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameControllerObject: {fileID: 0}
   GameManagerObject: {fileID: 0}
-  speed: 2
+  Speed: 10
   moveHorizontal: 0
   moveVertical: 0
 --- !u!212 &212628140485028546
