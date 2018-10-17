@@ -37,13 +37,25 @@ public class GameController: MonoBehaviour
         _gameManager = GameManager.GetComponent<GameManager>() as GameManager;
         _rounds = _gameManager.Rounds;
         TxtRounds.text = "Round: " + _currentround;
-        _ghostWin = 0;
-        _minerWin = 0;
+        _ghostWin = _gameManager.Score[0];
+        _minerWin = _gameManager.Score[1];
     }
 
     void Update()
     {
-
+        if(_ghostWin>(_rounds/2))
+        {
+            //Implement WInner here
+        }
+        else if(_minerWin>(_rounds/2))
+        {
+            //Miner Win
+        }
+        else if(_currentround==_rounds)
+        {
+            //No Wnner
+            GameEnd();
+        }
 
     }
 
@@ -76,15 +88,18 @@ public class GameController: MonoBehaviour
     */
     public void RestartGame()
     {
-
+        StartSpawn();
+        _currentround++;
     }
     public void GhostWin()
     {
-
+        _ghostWin++;
+        RestartGame();
     }
     public void MinerWin()
     {
-
+        _minerWin++;
+        RestartGame();
     }
     public void GameEnd()
     {
