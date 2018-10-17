@@ -45,10 +45,11 @@ public class GhostScript : MonoBehaviour {
         //Call the AddForce function of our Rigidbody2D rb2d supplying movement multiplied by speed to move our player.
         ghostRigidBody.velocity = movement * speed;
     }
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("Miner"))
         {
+            Destroy(other.gameObject);
             _gameController.GhostWin();
         }
     }

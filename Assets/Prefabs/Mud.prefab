@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4386553211017534}
   - component: {fileID: 212005760148375460}
   - component: {fileID: 60415767039715090}
+  - component: {fileID: 114239042946018864}
   m_Layer: 0
   m_Name: Mud
   m_TagString: Mud
@@ -102,6 +103,18 @@ PolygonCollider2D:
       - {x: 0.42, y: -0.5}
       - {x: 0.53, y: -0.51}
       - {x: 0.81, y: -0.51}
+--- !u!114 &114239042946018864
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1671501689919970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 801fe9bad995ff14ca8fd0a79e188294, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameControllerObject: {fileID: 0}
 --- !u!212 &212005760148375460
 SpriteRenderer:
   m_ObjectHideFlags: 1

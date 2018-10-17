@@ -11,7 +11,7 @@ public class MinerScript : MonoBehaviour {
 
     public GameObject GameControllerObject;
     public GameObject GameManagerObject;
-    public float speed = 10.0f;
+    public float Speed = 10.0f;
     public float moveHorizontal;
     public float moveVertical;
 
@@ -47,6 +47,6 @@ public class MinerScript : MonoBehaviour {
         Vector2 movement = new Vector2(moveHorizontal, moveVertical);
 
         //Call the AddForce function of our Rigidbody2D rb2d supplying movement multiplied by speed to move our player.
-        minerRigidBody.velocity = movement * speed;
+        minerRigidBody.velocity = movement * Speed;
     }
 }

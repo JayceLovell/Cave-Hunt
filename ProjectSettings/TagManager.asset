@@ -8,6 +8,7 @@ TagManager:
   - Mud
   - Ghost
   - Miner
+  - Lantern
   layers:
   - Default
   - TransparentFX
