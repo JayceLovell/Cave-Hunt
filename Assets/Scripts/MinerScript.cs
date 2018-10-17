@@ -49,4 +49,11 @@ public class MinerScript : MonoBehaviour {
         //Call the AddForce function of our Rigidbody2D rb2d supplying movement multiplied by speed to move our player.
         minerRigidBody.velocity = movement * Speed;
     }
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Wall"))
+        {
+            //Play Sound for hitting into wall
+        }
+    }
 }

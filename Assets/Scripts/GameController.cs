@@ -17,9 +17,7 @@ public class GameController: MonoBehaviour
     private int _ghostWin;
     private int _minerWin;
 
-    public GameObject[] MinerSpawns = new GameObject[8];
-    public GameObject[] MudSpawns = new GameObject[3];
-    public GameObject[] LanternSpawns = new GameObject[3];
+    public GameObject[] SpawnLocations = new GameObject[11];
     public GameObject GameManager;
     public Text TxtRounds;
     public GameObject Ghost;
@@ -71,8 +69,8 @@ public class GameController: MonoBehaviour
 
     void StartSpawn()//spawn the player, mud and lantern pieces at predefined locations
     {
-        _miner = (GameObject)Instantiate(Miner, MinerSpawns[UnityEngine.Random.Range(0, MinerSpawns.Length)].transform.position, Quaternion.identity);
-        _mud = (GameObject)Instantiate(Mud, MudSpawns[UnityEngine.Random.Range(0, MudSpawns.Length)].transform.position, Quaternion.identity);
+        _miner = (GameObject)Instantiate(Miner, SpawnLocations[UnityEngine.Random.Range(0, SpawnLocations.Length)].transform.position, Quaternion.identity);
+        _mud = (GameObject)Instantiate(Mud, SpawnLocations[UnityEngine.Random.Range(0, SpawnLocations.Length)].transform.position, Quaternion.identity);
         int[] lanternPos = new int[3];
         /*do
         {
@@ -81,9 +79,9 @@ public class GameController: MonoBehaviour
             lanternPos[2] = Random.Range(0, lanternPieces.Length);
         } while ((lanternPos[0] == lanternPos[1]) || (lanternPos[0] == lanternPos[2]) || (lanternPos[1] == lanternPos[2]));
         */
-        _lanternPieces[0] = (GameObject)Instantiate(LanternPieces[0], LanternSpawns[0].transform.position, Quaternion.identity);
-        _lanternPieces[1] = (GameObject)Instantiate(LanternPieces[1], LanternSpawns[1].transform.position, Quaternion.identity);
-        _lanternPieces[2] = (GameObject)Instantiate(LanternPieces[2], LanternSpawns[2].transform.position, Quaternion.identity);
+        _lanternPieces[0] = (GameObject)Instantiate(LanternPieces[0], SpawnLocations[UnityEngine.Random.Range(0, SpawnLocations.Length)].transform.position, Quaternion.identity);
+        _lanternPieces[1] = (GameObject)Instantiate(LanternPieces[1], SpawnLocations[UnityEngine.Random.Range(0, SpawnLocations.Length)].transform.position, Quaternion.identity);
+        _lanternPieces[2] = (GameObject)Instantiate(LanternPieces[2], SpawnLocations[UnityEngine.Random.Range(0, SpawnLocations.Length)].transform.position, Quaternion.identity);
     }
     /*
     void PlayerInput()
