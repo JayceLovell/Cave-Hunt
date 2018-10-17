@@ -5,50 +5,36 @@ using UnityEngine;
 public class GhostScript : MonoBehaviour {
 
     private GameController _gameController;
-    private Vector2 _newPosition = new Vector2(0.0f, 0.0f);
+    private GameManager _gameManager;
     private Rigidbody2D ghostRigidBody;
+    private AudioSource ghostwhail;
 
-    public GameObject GameControllerObject;
-    public AudioSource ghostwhail;
-    public float speed=10.0f;
-    public float moveHorizontal;
-    public float moveVertical;
+    public float speed = 10.0f;
 
-    // Use this for initialization
-    void Start () {
-        this._initialize();
-    }
-    // PRIVATE METHODS
-    /**
-     * This method initializes variables and object when called
-     */
-    private void _initialize()
+    void Awake()
     {
+        ghostwhail = GetComponent<AudioSource>();
         ghostRigidBody = GetComponent<Rigidbody2D>();
-        GameControllerObject = GameObject.Find("GameController");
-        _gameController = GameControllerObject.GetComponent<GameController>() as GameController;
+        _gameController = GameObject.Find("GameController").GetComponent<GameController>() as GameController;
+        _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>() as GameManager;
+    }
+    void Start()
+    {
+        ghostwhail.volume = _gameManager.Volume / 100f;
     }
 
-        // Update is called once per frame
     void FixedUpdate () {
-        
-
-            //Store the current horizontal input in the float moveHorizontal.
-            moveHorizontal = Input.GetAxis("Horizontal");
-
-            //Store the current vertical input in the float moveVertical.
-            moveVertical = Input.GetAxis("Vertical");
-
-        //Use the two store floats to create a new Vector2 variable movement.
-        Vector2 movement = new Vector2(moveHorizontal, moveVertical);
-
-        //Call the AddForce function of our Rigidbody2D rb2d supplying movement multiplied by speed to move our player.
+        //movement
+        Vector2 movement = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         ghostRigidBody.velocity = movement * speed;
     }
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("Miner"))
         {
+            ghostwhail.Stop();
+            ghostwhail.clip = (AudioClip)Resources.Load("SoundEffects/Behind");
+            ghostwhail.Play();
             Destroy(other.gameObject);
             _gameController.GhostWin();
         }
