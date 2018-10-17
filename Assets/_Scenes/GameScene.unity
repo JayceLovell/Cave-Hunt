@@ -150,7 +150,7 @@ GameObject:
   m_Component:
   - component: {fileID: 89786938}
   m_Layer: 0
-  m_Name: lanternSpawn
+  m_Name: Spawn (4)
   m_TagString: Spawn
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -163,7 +163,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 89786937}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -12.68, y: 15.15, z: 0}
+  m_LocalPosition: {x: 0, y: 14.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2146704004}
@@ -865,10 +865,9 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
-  m_Children:
-  - {fileID: 2146704004}
+  m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &244405134
 GameObject:
@@ -879,7 +878,7 @@ GameObject:
   m_Component:
   - component: {fileID: 244405135}
   m_Layer: 0
-  m_Name: minerSpawn
+  m_Name: Spawn
   m_TagString: Spawn
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -892,7 +891,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 244405134}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.2, y: 5.07, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2146704004}
@@ -907,6 +906,7 @@ GameObject:
   m_Component:
   - component: {fileID: 357975252}
   - component: {fileID: 357975251}
+  - component: {fileID: 357975250}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: Untagged
@@ -914,6 +914,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &357975250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 357975249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c856beb2f89de3343b3c17edd827f218, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Ghost: {fileID: 704605439}
 --- !u!20 &357975251
 Camera:
   m_ObjectHideFlags: 0
@@ -960,11 +972,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 357975249}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.3199997, y: 0.24, z: -10}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -9.04, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 704605445}
+  m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &508960953
@@ -1032,7 +1044,7 @@ GameObject:
   m_Component:
   - component: {fileID: 618930525}
   m_Layer: 0
-  m_Name: minerSpawn4
+  m_Name: Spawn (3)
   m_TagString: Spawn
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -1045,7 +1057,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 618930524}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.67, y: 14.57, z: 0}
+  m_LocalPosition: {x: -10.8, y: 16.14, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2146704004}
@@ -1060,7 +1072,7 @@ GameObject:
   m_Component:
   - component: {fileID: 679931188}
   m_Layer: 0
-  m_Name: minerSpawn3
+  m_Name: Spawn (2)
   m_TagString: Spawn
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -1088,11 +1100,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4450432424055872, guid: 6992d1c8f947c9a49b480ab357914bab, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 1.04
+      value: -9.36
       objectReference: {fileID: 0}
     - target: {fileID: 4450432424055872, guid: 6992d1c8f947c9a49b480ab357914bab, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0.36
+      value: -0.24
       objectReference: {fileID: 0}
     - target: {fileID: 4450432424055872, guid: 6992d1c8f947c9a49b480ab357914bab, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1116,66 +1128,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4450432424055872, guid: 6992d1c8f947c9a49b480ab357914bab, type: 2}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 60167987626833312, guid: 6992d1c8f947c9a49b480ab357914bab,
         type: 2}
       propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 82686094413200866, guid: 6992d1c8f947c9a49b480ab357914bab,
-        type: 2}
-      propertyPath: MaxDistance
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 82686094413200866, guid: 6992d1c8f947c9a49b480ab357914bab,
-        type: 2}
-      propertyPath: rolloffMode
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 82686094413200866, guid: 6992d1c8f947c9a49b480ab357914bab,
-        type: 2}
-      propertyPath: rolloffCustomCurve.m_Curve.Array.data[0].time
-      value: 0.06666667
-      objectReference: {fileID: 0}
-    - target: {fileID: 82686094413200866, guid: 6992d1c8f947c9a49b480ab357914bab,
-        type: 2}
-      propertyPath: rolloffCustomCurve.m_Curve.Array.data[0].inSlope
-      value: -3.308466
-      objectReference: {fileID: 0}
-    - target: {fileID: 82686094413200866, guid: 6992d1c8f947c9a49b480ab357914bab,
-        type: 2}
-      propertyPath: rolloffCustomCurve.m_Curve.Array.data[0].outSlope
-      value: -3.308466
-      objectReference: {fileID: 0}
-    - target: {fileID: 82686094413200866, guid: 6992d1c8f947c9a49b480ab357914bab,
-        type: 2}
-      propertyPath: rolloffCustomCurve.m_Curve.Array.data[0].inWeight
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 82686094413200866, guid: 6992d1c8f947c9a49b480ab357914bab,
-        type: 2}
-      propertyPath: rolloffCustomCurve.m_Curve.Array.data[0].outWeight
-      value: 0.24280666
-      objectReference: {fileID: 0}
-    - target: {fileID: 82686094413200866, guid: 6992d1c8f947c9a49b480ab357914bab,
-        type: 2}
-      propertyPath: rolloffCustomCurve.m_Curve.Array.data[1].inSlope
-      value: -0.05674445
-      objectReference: {fileID: 0}
-    - target: {fileID: 82686094413200866, guid: 6992d1c8f947c9a49b480ab357914bab,
-        type: 2}
-      propertyPath: rolloffCustomCurve.m_Curve.Array.data[1].outSlope
-      value: -0.05674445
-      objectReference: {fileID: 0}
-    - target: {fileID: 82686094413200866, guid: 6992d1c8f947c9a49b480ab357914bab,
-        type: 2}
-      propertyPath: rolloffCustomCurve.m_Curve.Array.data[1].inWeight
-      value: 0.19687025
-      objectReference: {fileID: 0}
-    - target: {fileID: 82686094413200866, guid: 6992d1c8f947c9a49b480ab357914bab,
-        type: 2}
-      propertyPath: rolloffCustomCurve.m_Curve.Array.data[1].outWeight
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1187,12 +1144,15 @@ GameObject:
     type: 2}
   m_PrefabInternal: {fileID: 704605438}
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 --- !u!4 &704605445 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4450432424055872, guid: 6992d1c8f947c9a49b480ab357914bab,
     type: 2}
   m_PrefabInternal: {fileID: 704605438}
+=======
+>>>>>>> parent of 0292850... Merge pull request #28 from JayceLovell/micheal
 --- !u!1 &1087817239
 GameObject:
   m_ObjectHideFlags: 0
@@ -1202,7 +1162,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1087817240}
   m_Layer: 0
-  m_Name: MudSpawn3
+  m_Name: MudSpawn (2)
   m_TagString: Mud
   m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -1282,7 +1242,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1382356296
 GameObject:
@@ -1371,7 +1331,7 @@ RectTransform:
   m_Children:
   - {fileID: 1678101594}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1389,7 +1349,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1475694460}
   m_Layer: 0
-  m_Name: MudSpawn2
+  m_Name: MudSpawn (1)
   m_TagString: Mud
   m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -1442,17 +1402,27 @@ MonoBehaviour:
   - {fileID: 679931187}
   - {fileID: 618930524}
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+  - {fileID: 89786937}
+  - {fileID: 1512387580}
+  - {fileID: 1813778005}
+  - {fileID: 1656255722}
+>>>>>>> parent of 0292850... Merge pull request #28 from JayceLovell/micheal
   MudSpawns:
   - {fileID: 237213066}
   - {fileID: 1475694459}
   - {fileID: 1087817239}
   LanternSpawns:
+<<<<<<< HEAD
 >>>>>>> master
+=======
+  - {fileID: 679931187}
+>>>>>>> parent of 0292850... Merge pull request #28 from JayceLovell/micheal
   - {fileID: 89786937}
-  - {fileID: 1512387580}
-  - {fileID: 1813778005}
   - {fileID: 1656255722}
+<<<<<<< HEAD
 <<<<<<< HEAD
   - {fileID: 596270743}
   - {fileID: 508960953}
@@ -1460,6 +1430,9 @@ MonoBehaviour:
   GameManager: {fileID: 0}
 =======
 >>>>>>> master
+=======
+  GameManager: {fileID: 0}
+>>>>>>> parent of 0292850... Merge pull request #28 from JayceLovell/micheal
   TxtRounds: {fileID: 1678101595}
   Ghost: {fileID: 704605439}
   Miner: {fileID: 1582523619377354, guid: 89fc25e727d3ffa4a94adde4a7e4f50f, type: 2}
@@ -1476,11 +1449,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1510377499}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -7.871311, y: 8.688875, z: -0.328125}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1512387580
 GameObject:
@@ -1491,7 +1464,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1512387581}
   m_Layer: 0
-  m_Name: lanternSpawn2
+  m_Name: Spawn (5)
   m_TagString: Spawn
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -1519,7 +1492,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1540325645}
   m_Layer: 0
-  m_Name: minerSpawn2
+  m_Name: Spawn (1)
   m_TagString: Spawn
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -1532,7 +1505,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1540325644}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.01, y: -14.78, z: 0}
+  m_LocalPosition: {x: -14.02, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2146704004}
@@ -1547,7 +1520,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1656255723}
   m_Layer: 0
-  m_Name: lanternSpawn4
+  m_Name: Spawn (7)
   m_TagString: Spawn
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -1650,7 +1623,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1813778006}
   m_Layer: 0
-  m_Name: lanternSpawn3
+  m_Name: Spawn (6)
   m_TagString: Spawn
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -1690,9 +1663,9 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2146704003}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 244405135}
   - {fileID: 1540325645}
@@ -1712,7 +1685,12 @@ Transform:
   - {fileID: 237213067}
   - {fileID: 1475694460}
   - {fileID: 1087817240}
+<<<<<<< HEAD
   m_Father: {fileID: 111501560}
   m_RootOrder: 0
 >>>>>>> master
+=======
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+>>>>>>> parent of 0292850... Merge pull request #28 from JayceLovell/micheal
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

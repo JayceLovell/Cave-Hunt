@@ -6,29 +6,30 @@ using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour {
 
-    public Button[] buttons;
+    
+    private bool _waitForStartPlayerA = false;
+    private bool _waitForStartPlayerB = false;
+    private int _selection=0;
+    private GameManager _gameManager;
 
-    int Rounds=3;
-    int Volume=50;
-    Text Txtrounds;
-    Text Notification;
-    Text TxtVolume;
-    bool _waitForStartPlayerA = false;
-    bool _waitForStartPlayerB = false;
-    int _selection = 0;
-    GameManager _gameManager;
+    public int Rounds;
+    public int Volume;
+    public Text Txtrounds;
+    public Text Notification;
+    public Text TxtVolume;
+    public GameObject gameManangerObject;
+
     AudioSource audioSource;
 
-    private void Awake()
+    void Start()
     {
         Notification = GameObject.Find("Notification").GetComponent<Text>();
         Txtrounds = GameObject.Find("TxtRounds").GetComponent<Text>();
         TxtVolume = GameObject.Find("TxtVolume").GetComponent<Text>();
         audioSource = this.GetComponent<AudioSource>();
-        _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>() as GameManager;
-    }
-    void Start()
-    {
+
+        gameManangerObject = GameObject.Find("GameManager");
+        _gameManager = gameManangerObject.GetComponent<GameManager>() as GameManager;
 
         Rounds = _gameManager.Rounds;
         Volume = _gameManager.Volume;
@@ -38,18 +39,14 @@ public class Menu : MonoBehaviour {
     }
     public void StartBtn()
     {
-        if(!_waitForStartPlayerA)playSound("voice/startPromp");
-        Notification.text = "Waiting for players to start";
+        Notification.text = "Waiting for other player to confirm";
         _waitForStartPlayerA = true;
     }
     public void OptionBtn()
     {
         DisplayRounds();
         DisplayVolume();
-        StartCoroutine(ShiftMenu(1000));
-        buttons[1].enabled = false;
-        buttons[2].enabled = true;
-        buttons[3].enabled = true;
+        StartCoroutine(ShiftMenu(700));
     }
     public void ApplyBtn()
     {
@@ -63,53 +60,58 @@ public class Menu : MonoBehaviour {
         GameObject.Find("VolumeSlider").GetComponent<Slider>().value=Volume;
         DisplayRounds();
         DisplayVolume();
-        StartCoroutine(ShiftMenu(-1000));
-        buttons[1].enabled = true;
-        buttons[2].enabled = false;
-        buttons[3].enabled = false;
+        StartCoroutine(ShiftMenu(-700));
     }
     public void DisplayRounds()
     {
         Txtrounds.text = "Rounds: " + (int)GameObject.Find("Slider").GetComponent<Slider>().value;
     }
-    
     public void DisplayVolume()
     {
+        //Unkown error here
         TxtVolume.text = "Volume: " + (int)GameObject.Find("VolumeSlider").GetComponent<Slider>().value;
     }
-    
     private IEnumerator ShiftMenu(int _height)
     {
         this.GetComponent<Rigidbody2D>().velocity = new Vector2(0, _height);
         yield return new WaitForSeconds(1);
         this.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
     }
-    private void playSound(string x)
+
+    private void playSelectionSound()
     {
-        audioSource.Stop();
-        audioSource.clip = (AudioClip)Resources.Load(x);
-        audioSource.Play();
+        switch (_selection)
+        {
+            case 0:
+                audioSource.PlayOneShot((AudioClip)Resources.Load("../voice/StartGame"), Volume/100);
+                break;
+            case 1:
+                audioSource.PlayOneShot((AudioClip)Resources.Load("../voice/VolmeSetting"), Volume / 100);
+                break;
+        }
     }
     //check for keys
     private void Update()
     {
         if (_waitForStartPlayerA && _waitForStartPlayerB)
         {
+           // _gameManager.Score = Score;
             _gameManager.Volume = Volume;
             _gameManager.Rounds = Rounds;
+
             SceneManager.LoadScene("GameScene", LoadSceneMode.Single);
         }
 
-        if (Input.GetAxis("JoyStickVertical") > 0&& _selection!=0)
+        if (Input.GetAxis("JoyStickVertical") > 0.5f&&_selection>0)
         {
-            _selection=0;
-            playSound("voice/start");
+            _selection++;
+            playSelectionSound();
         }
-        else if (Input.GetAxis("JoyStickVertical") < 0&& _selection != 1)
+        else if (Input.GetAxis("JoyStickVertical") < -0.5f && _selection < 1)
         {
-            _selection=1;
-            playSound("voice/volume");
-        }   
+            _selection--;
+            playSelectionSound();
+        }
 
 
         switch (_selection)
@@ -118,21 +120,22 @@ public class Menu : MonoBehaviour {
                 if (Input.GetButton("JoyPadSubmit"))
                 {
                     _waitForStartPlayerB = true;
-                    Notification.text = "Waiting for players to start";
-                    audioSource.clip = (AudioClip)Resources.Load("voice/start");
-                    audioSource.Play();
+                    audioSource.PlayOneShot((AudioClip)Resources.Load("../voice/waitingStart"), Volume / 100);
                 }
                 break;
+                //loudness
             case 1:
-                if (Input.GetAxis("JoyStickHorizontal") != 0)
+                if (Input.GetAxis("MinerHor") > 0.5f && Volume < 90)
                 {
-                    Volume += (int)Input.GetAxis("JoyStickHorizontal");
-                    if (Volume > 100) Volume = 100;
-                    if (Volume < 0) Volume = 0;
-                    GameObject.Find("VolumeSlider").GetComponent<Slider>().value = Volume;
-                    DisplayVolume();
-                    audioSource.volume = Volume/100f;
-                    playSound("voice/loudnessCheck");
+                    Volume += 10;
+                    string volSource = "../voice/" + Volume + "p";
+                    audioSource.PlayOneShot((AudioClip)Resources.Load(volSource), Volume / 100);
+                }
+                else if (Input.GetAxis("MinerHor") < -0.5f && Volume > 10) 
+                {
+                    Volume -= 10;
+                    string volSource = "../voice/"+Volume + "p";
+                    audioSource.PlayOneShot((AudioClip)Resources.Load(volSource), Volume / 100);
                 }
                 break;
         }
