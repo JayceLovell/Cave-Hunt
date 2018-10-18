@@ -6,7 +6,10 @@ public class MinerScript : MonoBehaviour {
 
     private GameManager _gameManager;
     private Rigidbody2D minerRigidBody;
-    AudioSource audio;
+    private SpriteRenderer sprite;
+    private Animator animator;
+
+    new AudioSource audio;
     bool onMud = false;
     
 
@@ -19,6 +22,8 @@ public class MinerScript : MonoBehaviour {
         minerRigidBody = GetComponent<Rigidbody2D>();
         _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>() as GameManager;
         audio = GetComponent<AudioSource>();
+        sprite = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
     }
 
 
@@ -46,12 +51,14 @@ public class MinerScript : MonoBehaviour {
             audio.clip = (AudioClip)Resources.Load("SoundEffects/footstep");
             audio.Play();
             onMud = false;
+            animator.SetBool("Slow", false);
         }
-        if(speed!=10 &&!onMud)
+        if(speed !=10 && !onMud)
         {
             audio.clip = (AudioClip)Resources.Load("SoundEffects/footstepMud");
             audio.Play();
             onMud = true;
+            animator.SetBool("Slow", true);
         }
         
         if (minerRigidBody.velocity.magnitude == 0)
@@ -62,6 +69,15 @@ public class MinerScript : MonoBehaviour {
         {
             audio.mute = false;
         }
+        if (minerRigidBody.velocity.x > 0)
+            sprite.flipX = true;
+        else
+            sprite.flipX = false;
+
+        if (minerRigidBody.velocity.magnitude > 0.1f)
+            animator.SetBool("Running", true);
+        else
+            animator.SetBool("Running", false);
     }
     private void OnCollisionEnter2D(Collision2D other)
     {
