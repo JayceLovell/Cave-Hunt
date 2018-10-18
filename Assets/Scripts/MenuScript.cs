@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class Menu : MonoBehaviour {
+public class MenuScript : MonoBehaviour {
 
     public Button[] buttons;
 
@@ -13,8 +13,8 @@ public class Menu : MonoBehaviour {
     Text Txtrounds;
     Text Notification;
     Text TxtVolume;
-    bool _waitForStartPlayerA = false;
-    bool _waitForStartPlayerB = false;
+    bool _ghostPlayerReady = false;
+    bool _minerPlayerReady = false;
     int _selection = 0;
     GameManager _gameManager;
     AudioSource audioSource;
@@ -38,9 +38,9 @@ public class Menu : MonoBehaviour {
     }
     public void StartBtn()
     {
-        if(!_waitForStartPlayerA)playSound("voice/startPromp");
+        //if(!_ghostPlayerReady)playSound("voice/startPromp");
         Notification.text = "Waiting for players to start";
-        _waitForStartPlayerA = true;
+        _ghostPlayerReady = true;
     }
     public void OptionBtn()
     {
@@ -93,7 +93,7 @@ public class Menu : MonoBehaviour {
     //check for keys
     private void Update()
     {
-        if (_waitForStartPlayerA && _waitForStartPlayerB)
+        if (_ghostPlayerReady && _minerPlayerReady)
         {
             _gameManager.Volume = Volume;
             _gameManager.Rounds = Rounds;
@@ -115,9 +115,9 @@ public class Menu : MonoBehaviour {
         switch (_selection)
         {
             case 0:
-                if (Input.GetButton("JoyPadSubmit"))
+                if (Input.GetButton("JoyPadSubmit")||Input.GetButton("MinerSubmit"))
                 {
-                    _waitForStartPlayerB = true;
+                    _minerPlayerReady = true;
                     Notification.text = "Waiting for players to start";
                     audioSource.clip = (AudioClip)Resources.Load("voice/start");
                     audioSource.Play();
@@ -126,6 +126,7 @@ public class Menu : MonoBehaviour {
             case 1:
                 if (Input.GetAxis("JoyStickHorizontal") != 0)
                 {
+                    Debug.Log("check");
                     Volume += (int)Input.GetAxis("JoyStickHorizontal");
                     if (Volume > 100) Volume = 100;
                     if (Volume < 0) Volume = 0;

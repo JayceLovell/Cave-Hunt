@@ -90,10 +90,12 @@ public class GameController: MonoBehaviour
         _lanternPieces[0] = (GameObject)Instantiate(LanternPieces[0], LanternSpawns[0].transform.position, Quaternion.identity);
         _lanternPieces[1] = (GameObject)Instantiate(LanternPieces[1], LanternSpawns[1].transform.position, Quaternion.identity);
         _lanternPieces[2] = (GameObject)Instantiate(LanternPieces[2], LanternSpawns[2].transform.position, Quaternion.identity);
-        foreach (GameObject lantern in _lanternPieces)
+
+        //let lantern volume be default since miner needs to hear it
+        /*foreach (GameObject lantern in _lanternPieces)
         {
             lantern.GetComponent<AudioSource>().volume = _gameManager.Volume/700f;
-        }
+        }*/
     }
     
     public void RestartGame()

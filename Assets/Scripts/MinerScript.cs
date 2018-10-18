@@ -33,16 +33,18 @@ public class MinerScript : MonoBehaviour {
     }
 
     void FixedUpdate() {
-        //movement
-        Vector2 joymovement = new Vector2(Input.GetAxis("JoyStickHorizontal"), Input.GetAxis("JoyStickVertical"));
-        //keyboard input
-        Vector2 keymovement = new Vector2(Input.GetAxis("MinerHorizontal"), Input.GetAxis("MinerVertical"));
-        if (joymovement.magnitude == 0)
+       
+            
+        if(Input.GetButton("MinerHorizontal")|| Input.GetButton("MinerVertical"))
         {
+            //keyboard input
+            Vector3 keymovement = new Vector3(Input.GetAxis("MinerHorizontal"), Input.GetAxis("MinerVertical"));
             minerRigidBody.velocity = keymovement * speed;
         }
         else
         {
+            //movement
+            Vector2 joymovement = new Vector2(Input.GetAxis("JoyStickHorizontal"), Input.GetAxis("JoyStickVertical"));
             minerRigidBody.velocity = joymovement * speed;
         }
 

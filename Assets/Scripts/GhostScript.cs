@@ -13,7 +13,7 @@ public class GhostScript : MonoBehaviour {
     private SpriteRenderer sprite;
     private Animator animator;
 
-    public float Speed = 10.0f;
+    public float Speed = 5f;
     public GameObject FogOfWar;
 
     void Awake()

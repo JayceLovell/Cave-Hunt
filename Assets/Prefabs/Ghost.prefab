@@ -253,7 +253,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f953f1a7f92bd524d9d144b93b3f313a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 10
+  Speed: 5
   FogOfWar: {fileID: 0}
 --- !u!212 &212231125033681904
 SpriteRenderer:
