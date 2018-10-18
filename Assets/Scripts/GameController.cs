@@ -14,6 +14,7 @@ public class GameController: MonoBehaviour
     private GameObject _mud;
     private GameManager _gameManager;
     private MinerScript _playerMiner;
+    private GhostScript _playerGhost;
     private int _ghostWin;
     private int _minerWin;
 
@@ -33,6 +34,7 @@ public class GameController: MonoBehaviour
     private void Awake()
     {
         _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>() as GameManager;
+        _playerGhost = Ghost.GetComponent<GhostScript>() as GhostScript;
 
         _rounds = _gameManager.Rounds;
         _ghostWin = _gameManager.Score[0];
@@ -111,6 +113,7 @@ public class GameController: MonoBehaviour
 
         //Repalces objects on board
         StartSpawn();
+        _playerGhost.Refresh();
 
         //increase rounds
         _currentround++;

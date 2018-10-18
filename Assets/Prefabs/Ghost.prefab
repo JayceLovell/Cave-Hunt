@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 82147759189281556}
   - component: {fileID: 114481163060763778}
   - component: {fileID: 50081795601857392}
+  - component: {fileID: 95868603711406916}
   m_Layer: 0
   m_Name: Ghost
   m_TagString: Ghost
@@ -145,10 +146,10 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 0
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 50
+  MaxDistance: 25
   Pan2D: 0
   rolloffMode: 1
   BypassEffects: 0
@@ -223,6 +224,24 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!95 &95868603711406916
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1588092818783908}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d154f26576761af4cb25587702f55dd8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114481163060763778
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -234,7 +253,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f953f1a7f92bd524d9d144b93b3f313a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  Speed: 10
+  FogOfWar: {fileID: 0}
 --- !u!212 &212231125033681904
 SpriteRenderer:
   m_ObjectHideFlags: 1
