@@ -15,7 +15,7 @@ public class LanternScript : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Miner")){
-            _gameController.LanternsCollected++;
+            _gameController.GotLantern();
             Instantiate((GameObject)Resources.Load("ding"), this.transform.position, Quaternion.identity);
             Destroy(this.gameObject);
         }

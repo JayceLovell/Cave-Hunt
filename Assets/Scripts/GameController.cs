@@ -17,10 +17,13 @@ public class GameController: MonoBehaviour
     private int _ghostWin;
     private int _minerWin;
 
-    public GameObject[] MinerSpawns;
-    public GameObject[] MudSpawns;
-    public GameObject[] LanternSpawns;
+    public GameObject[] MinerSpawns = new GameObject[4];
+    public GameObject[] MudSpawns = new GameObject[3];
+    public GameObject[] LanternSpawns = new GameObject[3];
     public Text TxtRounds;
+    public Text TxtGhostWins;
+    public Text TxtMinerWins;
+    public Text TxtLanternsCollected;
     public GameObject Ghost;
     public GameObject Miner;
     public GameObject Mud;
@@ -30,11 +33,16 @@ public class GameController: MonoBehaviour
     private void Awake()
     {
         _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>() as GameManager;
+
         _rounds = _gameManager.Rounds;
-        TxtRounds.text = "Round: " + _currentround;
         _ghostWin = _gameManager.Score[0];
         _minerWin = _gameManager.Score[1];
         LanternsCollected = 0;
+
+        TxtRounds.text = "Round: " + _currentround;
+        TxtGhostWins.text = "GhostWins: " + _ghostWin;
+        TxtMinerWins.text = "MinerWins: " + _minerWin;
+        TxtLanternsCollected.text = "Lanterns Collected: " + LanternsCollected;
         
     }
     void Start()
@@ -45,8 +53,6 @@ public class GameController: MonoBehaviour
 
     void Update()
     {
-        _gameManager.Score[0] = _ghostWin;
-        _gameManager.Score[1] = _minerWin;
         if (_ghostWin>(_rounds/2))
         {
             SceneManager.LoadScene("Finish", LoadSceneMode.Single);
@@ -97,9 +103,23 @@ public class GameController: MonoBehaviour
             if (item)
                 Destroy(item);
         }
+        //Reset lantern counter
+        LanternsCollected = 0;
+
+        _gameManager.Score[0] = _ghostWin;
+        _gameManager.Score[1] = _minerWin;
+
+        //Repalces objects on board
         StartSpawn();
+
+        //increase rounds
         _currentround++;
+
+        //Updates board
         TxtRounds.text = "Round: " + _currentround;
+        TxtGhostWins.text = "GhostWins: " + _ghostWin;
+        TxtMinerWins.text = "MinerWins: " + _minerWin;
+        TxtLanternsCollected.text = "Lanterns Collected: " + LanternsCollected;
     }
     public void GhostWin()
     {
@@ -123,12 +143,17 @@ public class GameController: MonoBehaviour
     }
     IEnumerator speedTime()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(10);
         revertSpeed();
     }
 
     private void revertSpeed()
     {
         _playerMiner.speed = 10;
+    }
+    public void GotLantern()
+    {
+        LanternsCollected++;
+        TxtLanternsCollected.text = "Lanterns Collected: " + LanternsCollected;
     }
 }
