@@ -46,7 +46,7 @@ public class Menu : MonoBehaviour {
     {
         DisplayRounds();
         DisplayVolume();
-        StartCoroutine(ShiftMenu(1000));
+        StartCoroutine(ShiftMenu(750));
         buttons[1].enabled = false;
         buttons[2].enabled = true;
         buttons[3].enabled = true;
@@ -63,7 +63,7 @@ public class Menu : MonoBehaviour {
         GameObject.Find("VolumeSlider").GetComponent<Slider>().value=Volume;
         DisplayRounds();
         DisplayVolume();
-        StartCoroutine(ShiftMenu(-1000));
+        StartCoroutine(ShiftMenu(-750));
         buttons[1].enabled = true;
         buttons[2].enabled = false;
         buttons[3].enabled = false;
@@ -100,12 +100,12 @@ public class Menu : MonoBehaviour {
             SceneManager.LoadScene("GameScene", LoadSceneMode.Single);
         }
 
-        if (Input.GetAxis("JoyStickVertical") > 0&& _selection!=0)
+        if (Input.GetAxis("JoyStickVertical") > 0 && _selection!=0)
         {
             _selection=0;
             playSound("voice/start");
         }
-        else if (Input.GetAxis("JoyStickVertical") < 0&& _selection != 1)
+        else if (Input.GetAxis("JoyStickVertical") < 0 && _selection != 1)
         {
             _selection=1;
             playSound("voice/volume");
