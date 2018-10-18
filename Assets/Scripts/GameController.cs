@@ -7,8 +7,8 @@ using UnityEngine.UI;
 
 public class GameController: MonoBehaviour
 {
-    private int _rounds;
-    private int _currentround=1;
+    public int _rounds;
+    public int _currentround=1;
     private GameObject[] _lanternPieces = new GameObject[3];
     private GameObject _miner;
     private GameObject _mud;
@@ -55,11 +55,7 @@ public class GameController: MonoBehaviour
 
     void Update()
     {
-        if (_ghostWin>(_rounds/2))
-        {
-            SceneManager.LoadScene("Finish", LoadSceneMode.Single);
-        }
-        else if(_minerWin>(_rounds/2))
+        if (_ghostWin > ((_rounds/2)+1)|| _minerWin > ((_rounds / 2) + 1))
         {
             SceneManager.LoadScene("Finish", LoadSceneMode.Single);
         }
@@ -67,7 +63,7 @@ public class GameController: MonoBehaviour
         {
             MinerWin();
         }
-        else if(_currentround==_rounds)
+        else if(_currentround>_rounds)
         {
             //No Wnner
             GameEnd();

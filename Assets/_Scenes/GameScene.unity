@@ -1708,6 +1708,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc8bf45f8b9b76a4f80fd16b60541e6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _rounds: 0
+  _currentround: 1
   MinerSpawns:
   - {fileID: 244405134}
   - {fileID: 1540325644}

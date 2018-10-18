@@ -12,8 +12,9 @@ public class GhostScript : MonoBehaviour {
     private Vector3 _maxFog = new Vector3(5.772128f, 3.003333f, 0f);
     private SpriteRenderer sprite;
     private Animator animator;
+    private bool _ghostwin = false;
 
-    public float Speed = 5f;
+    public float Speed = 7f;
     public GameObject FogOfWar;
 
     void Awake()
@@ -28,7 +29,7 @@ public class GhostScript : MonoBehaviour {
     }
     void Start()
     {
-        _ghostwhail.volume = _gameManager.Volume / 100f;
+        //_ghostwhail.volume = _gameManager.Volume / 100f;
         _minimumFod = FogOfWar.transform.localScale;
     }
 
@@ -74,6 +75,7 @@ public class GhostScript : MonoBehaviour {
         _ghostwhail.Stop();
         _ghostwhail.clip = (AudioClip)Resources.Load("SoundEffects/wailingCry");
         _ghostwhail.Play();
+        _ghostwin = false;
     }
     IEnumerator Wait()
     {
@@ -90,8 +92,11 @@ public class GhostScript : MonoBehaviour {
             _ghostwhail.Stop();
             _ghostwhail.clip = (AudioClip)Resources.Load("SoundEffects/Behind");
             _ghostwhail.Play();
-
-            StartCoroutine(Wait()); 
+            if (!_ghostwin)
+            {
+                _ghostwin = true;
+                StartCoroutine(Wait());
+            }
         }
     }
 }
