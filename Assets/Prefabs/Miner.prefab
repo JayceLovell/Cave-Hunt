@@ -32,7 +32,7 @@ GameObject:
   - component: {fileID: 81040259515829810}
   - component: {fileID: 114812682938307520}
   - component: {fileID: 50406744831877730}
-  - component: {fileID: 82970960041375612}
+  - component: {fileID: 82753879795685918}
   m_Layer: 0
   m_Name: Miner
   m_TagString: Miner
@@ -47,7 +47,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1582523619377354}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.816502, y: 0.026397705, z: -10}
+  m_LocalPosition: {x: -14.624483, y: -17.070602, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -151,7 +151,7 @@ AudioListener:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1582523619377354}
   m_Enabled: 1
---- !u!82 &82970960041375612
+--- !u!82 &82753879795685918
 AudioSource:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -160,7 +160,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 318925e2bdbf44e4a909d53dcb7c8ff8, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 1b7b29faf99750a4cb29edca00f4f808, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -168,7 +168,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 256
+  Priority: 128
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500

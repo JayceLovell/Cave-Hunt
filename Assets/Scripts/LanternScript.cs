@@ -16,6 +16,7 @@ public class LanternScript : MonoBehaviour {
     {
         if (other.gameObject.CompareTag("Miner")){
             _gameController.LanternsCollected++;
+            Instantiate((GameObject)Resources.Load("ding"), this.transform.position, Quaternion.identity);
             Destroy(this.gameObject);
         }
     }
