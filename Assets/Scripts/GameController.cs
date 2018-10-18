@@ -39,6 +39,7 @@ public class GameController: MonoBehaviour
     }
     void Start()
     {
+        GetComponent<AudioSource>().volume = _gameManager.Volume / 400f;
         StartSpawn(); 
     }
 
@@ -83,21 +84,19 @@ public class GameController: MonoBehaviour
         _lanternPieces[2] = (GameObject)Instantiate(LanternPieces[2], LanternSpawns[2].transform.position, Quaternion.identity);
         foreach (GameObject lantern in _lanternPieces)
         {
-            lantern.GetComponent<AudioSource>().volume = _gameManager.Volume/100f;
+            lantern.GetComponent<AudioSource>().volume = _gameManager.Volume/700f;
         }
     }
-    /*
-    void placeMud()
-    {
-
-        if (Input.GetMouseButton(0))
-        {
-            ghost.GetComponent<GhostScript>.mouseVec= Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y,0));
-        }
-    }
-    */
+    
     public void RestartGame()
     {
+        if (_miner)
+            Destroy(_miner);
+        foreach (GameObject item in _lanternPieces)
+        {
+            if (item)
+                Destroy(item);
+        }
         StartSpawn();
         _currentround++;
         TxtRounds.text = "Round: " + _currentround;
