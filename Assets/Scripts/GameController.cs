@@ -17,6 +17,7 @@ public class GameController: MonoBehaviour
     private GhostScript _playerGhost;
     private int _ghostWin;
     private int _minerWin;
+    private float _spawnradius = 5f;
 
     public GameObject[] MinerSpawns;
     public GameObject[] MudSpawns;
@@ -30,6 +31,7 @@ public class GameController: MonoBehaviour
     public GameObject Mud;
     public GameObject[] LanternPieces = new GameObject[3];
     public int LanternsCollected;
+    public int[] lanternPos;
 
     private void Awake()
     {
@@ -68,6 +70,10 @@ public class GameController: MonoBehaviour
             //No Wnner
             GameEnd();
         }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene("Menu", LoadSceneMode.Single);
+        }
 
     }
 
@@ -75,23 +81,42 @@ public class GameController: MonoBehaviour
     {
         _miner = (GameObject)Instantiate(Miner, MinerSpawns[UnityEngine.Random.Range(0, MinerSpawns.Length)].transform.position, Quaternion.identity);
         _mud = (GameObject)Instantiate(Mud, MudSpawns[UnityEngine.Random.Range(0, MudSpawns.Length)].transform.position, Quaternion.identity);
-        int[] lanternPos = new int[3];
-        do
+        lanternPos = new int[3];
+        /*do
         {
             lanternPos[0] = UnityEngine.Random.Range(0, LanternPieces.Length);
             lanternPos[1] = UnityEngine.Random.Range(0, LanternPieces.Length);
             lanternPos[2] = UnityEngine.Random.Range(0, LanternPieces.Length);
         } while ((lanternPos[0] == lanternPos[1]) || (lanternPos[0] == lanternPos[2]) || (lanternPos[1] == lanternPos[2]));
-        
         _lanternPieces[0] = (GameObject)Instantiate(LanternPieces[0], LanternSpawns[lanternPos[0]].transform.position, Quaternion.identity);
         _lanternPieces[1] = (GameObject)Instantiate(LanternPieces[1], LanternSpawns[lanternPos[1]].transform.position, Quaternion.identity);
         _lanternPieces[2] = (GameObject)Instantiate(LanternPieces[2], LanternSpawns[lanternPos[2]].transform.position, Quaternion.identity);
+        */
+
 
         //let lantern volume be default since miner needs to hear it
         /*foreach (GameObject lantern in _lanternPieces)
         {
             lantern.GetComponent<AudioSource>().volume = _gameManager.Volume/700f;
         }*/
+        do
+        {
+            lanternPos[0] = UnityEngine.Random.Range(0, LanternSpawns.Length);
+        } while (Physics.CheckSphere(LanternSpawns[lanternPos[0]].transform.position, _spawnradius));
+        //lanternPos[0] = UnityEngine.Random.Range(0, LanternSpawns.Length);
+        _lanternPieces[0] = (GameObject)Instantiate(LanternPieces[0],LanternSpawns[lanternPos[0]].transform.position, Quaternion.identity);
+
+        do
+        {
+            lanternPos[1] = UnityEngine.Random.Range(0, LanternSpawns.Length);
+        } while (Physics.CheckSphere(LanternSpawns[lanternPos[1]].transform.position, _spawnradius));
+        _lanternPieces[1] = (GameObject)Instantiate(LanternPieces[1], LanternSpawns[lanternPos[1]].transform.position, Quaternion.identity);
+
+        do
+        {
+            lanternPos[2] = UnityEngine.Random.Range(0, LanternSpawns.Length);
+        } while (Physics.CheckSphere(LanternSpawns[lanternPos[2]].transform.position, _spawnradius));
+        _lanternPieces[2] = (GameObject)Instantiate(LanternPieces[2], LanternSpawns[lanternPos[2]].transform.position, Quaternion.identity);
     }
     
     public void RestartGame()

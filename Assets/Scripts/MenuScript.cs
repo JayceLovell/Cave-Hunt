@@ -203,6 +203,10 @@ public class MenuScript : MonoBehaviour {
         buttons[2].enabled = false;
         buttons[3].enabled = false;
     }
+    public void ExitBtn()
+    {
+        Application.Quit();
+    }
     public void DisplayRounds()
     {
         Txtrounds.text = "Rounds: " + (int)GameObject.Find("Slider").GetComponent<Slider>().value;
