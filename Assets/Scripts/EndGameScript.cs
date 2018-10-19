@@ -3,7 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+/*
 
+ *
+
+ * Yueyang Sun - 300933625
+
+ * Jayce Lovell - 300833478
+
+ * Vincent Wright - 300928112
+
+ *
+
+ * COMP394-002 Practical Game Design - Cave Hunt
+
+ */
 public class EndGameScript : MonoBehaviour {
 
     private GameManager _gameManager;

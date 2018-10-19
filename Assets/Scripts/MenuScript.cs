@@ -3,7 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+/*
 
+ *
+
+ * Yueyang Sun - 300933625
+
+
+ * Jayce Lovell - 300833478
+
+ * Vincent Wright - 300928112
+
+ *
+
+ * COMP394-002 Practical Game Design - Cave Hunt
+
+ */
 public class MenuScript : MonoBehaviour {
 
     /*public Button[] buttons;
