@@ -1,6 +1,20 @@
 ﻿using System.Collections;
 using UnityEngine;
+/*
 
+ * 
+
+ * Yueyang Sun - 300933625
+ 
+ * Jayce Lovell - 300833478
+
+ * Vincent Wright - 300928112
+
+ * 
+
+ * COMP394-002 Practical Game Design - Cave Hunt
+
+ */
 public class CameraFollow : MonoBehaviour {
     private Vector3 offset; //Private variable to store the offset distance between the player and camera
 
