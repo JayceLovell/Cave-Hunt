@@ -944,7 +944,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2146704004}
-  m_RootOrder: 7
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &244405134
 GameObject:
@@ -1235,6 +1235,34 @@ Transform:
   m_Father: {fileID: 2146704004}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &658046896
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 658046897}
+  m_Layer: 0
+  m_Name: lanternSpawn6
+  m_TagString: Spawn
+  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &658046897
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 658046896}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 10.87, y: -0.09, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2146704004}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &667380625
 GameObject:
   m_ObjectHideFlags: 0
@@ -1390,6 +1418,34 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1588092818783908, guid: 6992d1c8f947c9a49b480ab357914bab,
     type: 2}
   m_PrefabInternal: {fileID: 704605438}
+--- !u!1 &1087271722
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1087271723}
+  m_Layer: 0
+  m_Name: lanternSpawn5
+  m_TagString: Spawn
+  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1087271723
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1087271722}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 13.9, y: -11, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2146704004}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1087817239
 GameObject:
   m_ObjectHideFlags: 0
@@ -1416,7 +1472,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2146704004}
-  m_RootOrder: 9
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1143783070
 GameObject:
@@ -1450,8 +1506,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -508.2, y: -25.9}
-  m_SizeDelta: {x: 124.01001, y: 51.8}
+  m_AnchoredPosition: {x: -266.28, y: -25.9}
+  m_SizeDelta: {x: 172.54, y: 51.81}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1143783072
 MonoBehaviour:
@@ -1493,6 +1549,34 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1143783070}
   m_CullTransparentMesh: 0
+--- !u!1 &1147573690
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1147573691}
+  m_Layer: 0
+  m_Name: lanternSpawn4
+  m_TagString: Spawn
+  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1147573691
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1147573690}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 3, y: -13.99, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2146704004}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1301917998
 GameObject:
   m_ObjectHideFlags: 0
@@ -1678,7 +1762,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2146704004}
-  m_RootOrder: 8
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1510377499
 GameObject:
@@ -1723,6 +1807,9 @@ MonoBehaviour:
   - {fileID: 89786937}
   - {fileID: 1512387580}
   - {fileID: 1813778005}
+  - {fileID: 1147573690}
+  - {fileID: 1087271722}
+  - {fileID: 658046896}
   TxtRounds: {fileID: 1678101595}
   TxtGhostWins: {fileID: 667380627}
   TxtMinerWins: {fileID: 1143783072}
@@ -1735,6 +1822,7 @@ MonoBehaviour:
   - {fileID: 1466864176236574, guid: 39cb15c84d7268f4c9c084c15322ec73, type: 2}
   - {fileID: 1443159473836812, guid: 68c01da796e37434eafa7ae63205ca5d, type: 2}
   LanternsCollected: 0
+  lanternPos: 
 --- !u!4 &1510377501
 Transform:
   m_ObjectHideFlags: 0
@@ -2034,6 +2122,9 @@ Transform:
   - {fileID: 89786938}
   - {fileID: 1512387581}
   - {fileID: 1813778006}
+  - {fileID: 1147573691}
+  - {fileID: 1087271723}
+  - {fileID: 658046897}
   - {fileID: 237213067}
   - {fileID: 1475694460}
   - {fileID: 1087817240}

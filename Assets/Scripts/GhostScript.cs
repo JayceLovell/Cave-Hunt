@@ -45,7 +45,7 @@ public class GhostScript : MonoBehaviour {
             }
             else
             {
-                FogOfWar.transform.localScale += new Vector3(0.001f, 0.001f, 0);
+                FogOfWar.transform.localScale += new Vector3(0.01f, 0.01f, 0);
             }
         }
         else
