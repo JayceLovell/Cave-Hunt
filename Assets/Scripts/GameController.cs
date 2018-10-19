@@ -18,9 +18,9 @@ public class GameController: MonoBehaviour
     private int _ghostWin;
     private int _minerWin;
 
-    public GameObject[] MinerSpawns = new GameObject[4];
-    public GameObject[] MudSpawns = new GameObject[3];
-    public GameObject[] LanternSpawns = new GameObject[3];
+    public GameObject[] MinerSpawns;
+    public GameObject[] MudSpawns;
+    public GameObject[] LanternSpawns;
     public Text TxtRounds;
     public Text TxtGhostWins;
     public Text TxtMinerWins;
@@ -83,9 +83,9 @@ public class GameController: MonoBehaviour
             lanternPos[2] = UnityEngine.Random.Range(0, LanternPieces.Length);
         } while ((lanternPos[0] == lanternPos[1]) || (lanternPos[0] == lanternPos[2]) || (lanternPos[1] == lanternPos[2]));
         
-        _lanternPieces[0] = (GameObject)Instantiate(LanternPieces[0], LanternSpawns[0].transform.position, Quaternion.identity);
-        _lanternPieces[1] = (GameObject)Instantiate(LanternPieces[1], LanternSpawns[1].transform.position, Quaternion.identity);
-        _lanternPieces[2] = (GameObject)Instantiate(LanternPieces[2], LanternSpawns[2].transform.position, Quaternion.identity);
+        _lanternPieces[0] = (GameObject)Instantiate(LanternPieces[0], LanternSpawns[lanternPos[0]].transform.position, Quaternion.identity);
+        _lanternPieces[1] = (GameObject)Instantiate(LanternPieces[1], LanternSpawns[lanternPos[1]].transform.position, Quaternion.identity);
+        _lanternPieces[2] = (GameObject)Instantiate(LanternPieces[2], LanternSpawns[lanternPos[2]].transform.position, Quaternion.identity);
 
         //let lantern volume be default since miner needs to hear it
         /*foreach (GameObject lantern in _lanternPieces)
